@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MVC_CRUB_EmpleadosDeptos.Models.Models.TBL_DEPARTAMENTO>
+
+@{
+                /**/
+
+                ViewBag.Title = "Listado Departamentos";
+}
+
+<h2>Listado Departamentos</h2>
+
+<p>
+    <a class="btn btn-success" style="margin-bottom:10px" href="/Departamentos/Create">
+        Ingresar Nuevo Departamento
+    </a>
+    @*@Html.ActionLink("Ingresar Nuevo Departamento", "Create")*@
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Nombre)
+    </td>
+    <td>
+        @Html.Raw("<a data-modal='' href='/Departamentos/Edit/" + item.Codigo + "' id='" + item.Codigo + "' title='Modificar'> <span class='glyphicon glyphicon-edit'> </span> <a/>")
+        @*@Html.ActionLink("Modificar", "Edit", new { id = item.Codigo }) |*@
+        @Html.Raw("<a data-modal='' href='/Departamentos/Details/" + item.Codigo + "' id='" + item.Codigo + "' title='Detalles'> <span class='glyphicon glyphicon-th-list'> </span> <a/>")
+        @*@Html.ActionLink("Detalles", "Details", new { id = item.Codigo }) |*@
+        @Html.Raw("<a data-modal='' href='/Departamentos/Delete/" + item.Codigo + "' id='" + item.Codigo + "' title='Borrar'> <span class='glyphicon glyphicon-trash'> </span> <a/>")
+        @*@Html.ActionLink("Borrar", "Delete", new { id = item.Codigo })*@
+    </td>
+</tr>
+}
+
+</table>
+
+@*<a href="/Home/Index">Retornar</a>*@
+<a class="btn btn-success" style="margin-bottom:10px" href="/Home/Index">
+    Retornar
+</a>
